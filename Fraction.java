@@ -16,8 +16,8 @@ public class Fraction {
      */
     //Constructors
     public Fraction() {
-        numerator = 1;
-        denominator = 1;
+        numerator = (int) (Math.random()*9 +1);
+        denominator = (int) (Math.random()*9 +1);
     }
 
     /**
@@ -37,8 +37,8 @@ public class Fraction {
     public Fraction(String str) {
         int n = str.indexOf("/");
         if(n > 0) {
-            numerator = Integer.parseInt(str.substring(n-1,n));
-            denominator = Integer.parseInt(str.substring(n+1,n+2));
+            numerator = Integer.parseInt(str.substring(0,n));
+            denominator = Integer.parseInt(str.substring(n+1));
         }
 
     }
@@ -81,27 +81,31 @@ public class Fraction {
     public void setDeno(int d) {
         denominator = d;
     }   
-    
+
     public static Fraction multiply(Fraction Frac1, Fraction Frac2) {
         Fraction finalFrac = new Fraction(Frac1.numerator*Frac2.numerator, Frac2.denominator * Frac2.denominator);
         finalFrac.reduce();
         return finalFrac;
     }
+
     public static Fraction divide(Fraction Frac1, Fraction Frac2) {
         Fraction finalFrac = new Fraction(Frac1.numerator*Frac2.denominator, Frac1.denominator * Frac2.numerator);
         finalFrac.reduce();
         return finalFrac;
     }
+
     public static Fraction add(Fraction Frac1, Fraction Frac2) {
         Fraction finalFrac = new Fraction(Frac1.numerator*Frac2.denominator + Frac1.denominator * Frac2.numerator, Frac1.denominator *  Frac2.denominator);
         finalFrac.reduce();
         return finalFrac;
     }
+
     public static Fraction subtract(Fraction Frac1, Fraction Frac2) {
         Fraction finalFrac = new Fraction(Frac1.numerator*Frac2.denominator - Frac1.denominator * Frac2.numerator, Frac1.denominator *  Frac2.denominator);
         finalFrac.reduce();
         return finalFrac;
     }
+
     public int GCF() {
         int a = numerator;
         int b = denominator;
@@ -112,6 +116,6 @@ public class Fraction {
         }
         return a;
     }
+
 }
-    
 
